@@ -14,10 +14,36 @@ int main(int argc, char* argv[]) {
         }
         std::cout << std::endl;
 
+        
+        /*
+        for (int i = 0; i < argc; i++)                                              //I can't fixed problems with this part of exercise
+        {
+            if (std::string argv[i] == "-o")
+                output_file(edges);
+
+            if (std::string argv[i] == "")
+            {
+                std::cout << "Short instruction:" << std::endl;
+                std::cout << std::endl;
+                std::cout << "You have to declare flag:" << std::endl;
+                std::cout << "-o to create a text file with result" << std::endl;
+            }
+        }
+        */
+
+        //I've made simply saving result to the file instead of flags
+
+        std::ofstream file;
+        file.open("result.txt");
+
         if (check_if_graph_is_bipartite(edges) == true)
-            std::cout << "Graph is bipartite" << std::endl;
+            file << "Graph is bipartite";
         else
-            std::cout << "Graph is not bipartite" << std::endl;
-      
+            file << "Graph is not bipartite";
+        file.close();
+
+        std::cout << "Results are in file results.txt" << std::endl;
+
+   
         return 0;
 }
